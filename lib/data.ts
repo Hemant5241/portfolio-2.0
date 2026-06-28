@@ -31,10 +31,6 @@ export const MY_STACK = {
             icon: '/logo/next.png',
         },
         {
-            name: 'Redux',
-            icon: '/logo/redux.png',
-        },
-        {
             name: 'Tailwind CSS',
             icon: '/logo/tailwind.png',
         },
@@ -49,11 +45,7 @@ export const MY_STACK = {
         {
             name: 'Sass',
             icon: '/logo/sass.png',
-        },
-        {
-            name: 'Bootstrap',
-            icon: '/logo/bootstrap.svg',
-        },
+        }
     ],
     backend: [
         {
@@ -105,199 +97,91 @@ export const MY_STACK = {
 
 export const PROJECTS: IProject[] = [
     {
-        title: 'Electro EV',
-        slug: 'electro-ev',
-        liveUrl: 'https://electroev.co.uk/',
-        year: 2025,
-        description: `
-      A complete agency portfolio platform built for Electro EV to showcase their services, blog content, and product offerings. <br/> <br/>
-      
-      Key Features:<br/>
-      <ul>
-        <li>🛠️ Service Display System: Interactive service showcase with synchronized sliders</li>
-        <li>✍️ Blog Management: SEO-friendly blog with categorization and search</li>
-        <li>🛒 Product Catalog: Organized product display with filtering capabilities</li>
-        <li>📱 Fully Responsive: Optimized for all device sizes</li>
-        <li>⚡ Fast Performance: Optimized Next.js frontend with ISR (Incremental Static Regeneration)</li>
-      </ul><br/>
-      
-      Technical Highlights:
-      <ul>
-        <li>Implemented complex slider synchronization logic using Swiper.js</li>
-        <li>Customized Payload CMS admin panel for intuitive content management</li>
-        <li>Developed reusable UI components with shadcn for design consistency</li>
-        <li>Configured efficient data fetching strategies in Next.js</li>
-      </ul>
-      `,
-        role: `
-      Full-Stack Developer <br/>
-      Owned the entire development lifecycle:
-      <ul>
-        <li>✅ Backend: Configured Payload CMS with custom collections for services, blogs, and products</li>
-        <li>🎨 Frontend: Built all UI components using Tailwind CSS and shadcn</li>
-        <li>🔄 State Management: Implemented client-side data fetching and caching</li>
-        <li>🖥️ CMS Customization: Created admin interfaces for content editors</li>
-        <li>🚀 Deployment: Set up CI/CD pipeline for Vercel hosting</li>
-        <li>🧩 Third-Party Integration: Added Swiper.js for interactive sliders</li>
-      </ul>
-      `,
-        techStack: [
-            'Next.js',
-            'Payload CMS',
-            'Tailwind CSS',
-            'shadcn',
-            'Swiper.js',
-            'React Hook Form',
-            'Vercel',
-        ],
-        thumbnail: '/projects/thumbnail/mti-electronics.webp',
-        longThumbnail: '/projects/long/mti-electronics.webp',
-        images: [
-            '/projects/images/mti-electronics-1.webp',
-            '/projects/images/mti-electronics-2.webp',
-        ],
+        title: 'Shiro.ai',
+        slug: 'shiro-ai',
+        techStack: ["React", "FastAPI", "PostgreSQL", "ChromaDB", "Celery", "Redis"],
+        thumbnail: '/shiro.ai.gif',
+        longThumbnail: '/shiro.ai.gif',
+        images: ['/shiro.ai.gif'],
+        sourceCode: 'https://github.com/Hemant5241/shiro.ai',
+        year: 2026,
+        description: `Graph-Augmented RAG Platform for Personalized Learning and Active Recall<br/><br/>An intelligent study platform leveraging Graph-Augmented RAG to convert static study materials into interactive quizzes, spaced-repetition flashcards, and epistemic mind maps.<br/><br/>Shiro.ai replaces passive reading with active recall tools. By extracting semantic concepts and relationships, it builds interactive 3D knowledge graphs from uploaded documents and videos.<br/><br/>The platform features a focused Pomodoro study room, active recall scratchpads, automated podcast generation, and Feynman technique evaluation to pinpoint logical gaps in user understanding.<br/><br/>A high-performance pipeline offloads heavy text processing and audio synthesis to background workers, ensuring a fast, responsive user experience on a sleek bento-grid dashboard.`,
+        role: `Full-Stack · AI/ML Engineering`,
+    },
+
+    {
+        title: 'Nike Zone',
+        slug: 'nike-zone',
+        techStack: ["React Native", "Tailwind CSS", "Framer Motion", "REACT ROUTER DOM"],
+        thumbnail: '/nike.png',
+        longThumbnail: '/nike.gif',
+        images: ['/nike.png', '/nike.gif'],
+        liveUrl: 'https://nike-shoe-zone.vercel.app',
+        sourceCode: 'https://github.com/Hemant5241/nike-zone',
+        year: 2024,
+        description: `Nike Zone - A UX/UI Redesign<br/><br/>An immersive e-commerce experience featuring advanced filters, interactive 360-degree product views, and personalized recommendations. <br/><br/>This project involved a complete UX/UI overhaul of the Nike Zone website, focusing on enhancing the user journey from discovery.`,
+        role: `UI/UX Design · Product Design`,
     },
     {
-        title: 'Epikcart',
-        slug: 'epikcart',
-        techStack: [
-            'React',
-            'Redux',
-            'React i18n',
-            'Tailwind CSS',
-            'Framer Motion',
-            'debouncing',
-            'Api Integration',
-        ],
-        thumbnail: '/projects/thumbnail/epikcart.jpg',
-        longThumbnail: '/projects/long/epikcart.jpg',
-        images: [
-            '/projects/images/epikcart-1.png',
-            '/projects/images/epikcart-2.png',
-            '/projects/images/epikcart-3.png',
-            '/projects/images/epikcart-4.png',
-            '/projects/images/epikcart-5.png',
-        ],
-        liveUrl: 'https://demo.epikcart.siphertech.com/',
-        year: 2023,
-        description: `Epikcart is a feature-rich, scalable e-commerce platform tailored for large businesses. It features dynamic product filtering, multi-language support with RTL, advanced inventory management, order tracking, and refund systems, offering a comprehensive solution for multi-vendor operations.`,
-        role: `As the frontend developer in a team of five, I: <br/>
-        - Built the frontend from scratch using React, Redux, RTK Query, and Tailwind CSS.<br/>
-        - Developed dynamic filtering logic for the product search page with admin-configurable parameters.<br/>
-        - Integrated multi-language support with React i18n, including RTL handling.<br/>
-        - Delivered a responsive, user-friendly interface in collaboration with the UI/UX designer.`,
-    },
-    {
-        title: 'Resume Roaster',
-        slug: 'resume-roaster',
-        techStack: [
-            'GPT-4',
-            'Next.js',
-            'Postgressql',
-            'Prisma',
-            'Tailwind CSS',
-        ],
-        thumbnail: '/projects/thumbnail/resume-roaster.jpg',
-        longThumbnail: '/projects/long/resume-roaster.jpg',
-        images: [
-            '/projects/images/resume-roaster-1.png',
-            '/projects/images/resume-roaster-2.png',
-            '/projects/images/resume-roaster-3.png',
-        ],
-        liveUrl: 'https://resume-roaster.vercel.app/',
-        year: 2023,
-        description:
-            'Resume Roaster is a web application designed to provide tailored resume feedback and professional writing services. Built with Next.js, PostgreSQL, Prisma, and Tailwind CSS, it integrates GPT-4 for AI-powered recommendations. The platform also includes peer-to-peer reviews with a points-based system, fostering a collaborative and engaging experience. Targeting freshers, experienced professionals, and programmers, it helps optimize resumes for job-specific success.',
-        role: `As the sole developer and business owner, I:<br/>
-        - Designed and developed the platform end-to-end using Next.js, PostgreSQL, Prisma, and Tailwind CSS.<br/>
-        - Integrated GPT-4 for AI-driven feedback and insights.<br/>
-        - Implemented complex SQL queries, including one to identify the top two resumes based on user points.`,
-    },
-    {
-        title: 'Real Estate',
-        slug: 'property-pro',
-        techStack: [
-            'React.js',
-            'Redux',
-            'Tailwind CSS',
-            'React i18n',
-            'Framer Motion',
-        ],
-        thumbnail: '/projects/thumbnail/property-pro.jpg',
-        longThumbnail: '/projects/long/property-pro.jpg',
-        images: [
-            '/projects/images/property-pro-1.png',
-            '/projects/images/property-pro-2.png',
-            '/projects/images/property-pro-3.png',
-        ],
-        liveUrl: 'https://demo.propertypro.siphertech.com/',
-        year: 2023,
-        description:
-            'PropertyPro is a real estate management platform offering users a seamless experience to explore, manage, and view property listings. The application emphasizes accessibility and responsive design, ensuring a smooth interface across devices.',
-        role: `As the frontend developer, I:<br/>
-        - Built the frontend using React, Redux, RTK Query, Framer Motion, and Tailwind CSS.<br/>
-        - Integrated dynamic state management for efficient handling of property data.<br/>
-        - Implemented multi-language support with React i18n to cater to diverse audiences.<br/>
-        - Enhanced user interaction with animations and transitions using Framer Motion.`,
+        title: 'You Type',
+        slug: 'you-type',
+        techStack: ["React", "Node.js", "Express", "MongoDB", "Zustand", "Tailwind"],
+        thumbnail: '/youtype.png',
+        longThumbnail: '/youtype.gif',
+        images: ['/youtype.png', '/youtype.gif'],
+        sourceCode: 'https://github.com/Hemant5241/you-type',
+        year: 2026,
+        description: `Full-Stack Minimalist Typing Platform<br/><br/>A minimalist typing speed test application featuring live WPM/accuracy analysis, user progress tracking, and performance analytics dashboards.<br/><br/>Traditional typing tests are cluttered. You Type provides a distraction-free, dark-themed interface focused entirely on flow, allowing users to measure raw speed without visual noise.<br/><br/>The application calculates character correctness, errors, and real-time words-per-minute (WPM) on 30-second intervals, saving performance data to a secure database via JSON Web Token authentication.<br/><br/>Historical progression is tracked and visualized through line and bar charts using Recharts, giving users a clear path to build muscle memory and analyze typing habits over time.`,
+        role: `Full-Stack Engineering`,
     },
     {
         title: 'Consulting Finance',
-        slug: 'crenotive',
-        techStack: ['HTML', 'CSS & SCSS', 'Javascript', 'Bootstrap'],
-        thumbnail: '/projects/thumbnail/consulting-finance.jpg',
-        longThumbnail: '/projects/long/consulting-finance.jpg',
-        images: [
-            '/projects/images/consulting-finance-1.png',
-            '/projects/images/consulting-finance-2.png',
-            '/projects/images/consulting-finance-3.png',
-        ],
-        sourceCode: 'https://github.com/Hemant5241/crenotive',
-        liveUrl: 'https://crenotive.netlify.app/',
-        year: 2023,
-        description:
-            'I developed Crenotive, a portfolio website using Html, SASS, and jQuery to showcase services and expertise. The design focuses on responsive user experience and effective presentation of professional achievements.',
-        role: ``,
+        slug: 'consulting-finance',
+        techStack: ["HTML5", "CSS3", "SCSS", "JavaScript", "jQuery"],
+        thumbnail: '/quantica-tech-innovations.png',
+        longThumbnail: '/quantica-tech-innovations.gif',
+        images: ['/quantica-tech-innovations.png', '/quantica-tech-innovations.gif'],
+        liveUrl: 'https://quantica-tech-innovations.netlify.app',
+        sourceCode: 'https://github.com/Hemant5241/Quantica-Tech-Innovations',
+        year: 2024,
+        description: `Quantica Tech Innovations<br/><br/>A fully responsive, highly customizable website tailored for the modern corporate world and tech startups.<br/><br/>This project provides a robust foundation for building professional portfolios, agency websites, and corporate landing pages.<br/><br/>The site features a clean aesthetic, subtle animations, sticky navigation, and a strong visual hierarchy.<br/><br/>Built with a highly maintainable SASS preprocessor structure for easy theme customization and deployed seamlessly to Netlify.`,
+        role: `Front-End Engineering`,
     },
     {
-        title: 'devLinks',
-        slug: 'devLinks',
-        techStack: ['Next.js', 'Formik', 'Drag & Drop', 'Tailwind CSS'],
-        thumbnail: '/projects/thumbnail/devLinks.jpg',
-        longThumbnail: '/projects/long/devLinks.jpg',
-        images: [
-            '/projects/images/devLinks-1.png',
-            '/projects/images/devLinks-2.png',
-            '/projects/images/devLinks-3.png',
-        ],
-        sourceCode: 'https://github.com/Hemant5241/devsLink',
-        liveUrl: 'https://devlinks-demo.vercel.app/auth/signin',
-        year: 2023,
-        description: `One of the most challenging projects in Frontend Mentor.<br/><br/>
-
-            I developed a LinkSharing App as part of the Frontend Mentor challenge, utilizing React, Redux, and Tailwind CSS to create a responsive and feature-rich platform. The app allows users to share, save, and explore links, with a focus on intuitive design and smooth navigation. Advanced state management ensures efficient data handling for user interactions.`,
-        role: ``,
+        title: 'PORTFOLIO - 02',
+        slug: 'hemant-portfolio',
+        techStack: ["Next.js", "TypeScript", "GSAP", "Lenis", "Tailwind", "Canvas API"],
+        thumbnail: '/portfolio.png',
+        longThumbnail: '/portfolio.gif',
+        images: ['/portfolio.png', '/portfolio.gif'],
+        sourceCode: 'https://github.com/Hemant5241/hemant-portfolio',
+        year: 2026,
+        description: `This portfolio<br/><br/>The site you're looking at right now. Built to feel like something. Built to mean something. Kept raw.<br/><br/>The cobbler's shoes. Every developer's portfolio is a statement about what they value — and most of them say nothing, because they play it safe.<br/><br/>The design language comes from Ray Gun magazine, underground zines, and street culture editorial: oversized type that bleeds off the edge, halftone grain across the surface, text that collides with imagery instead of sitting politely beside it.<br/><br/>Under the hood: Next.js App Router, GSAP with ScrollTrigger and SplitText driving every animation, Lenis for smooth scroll synced to GSAP's ticker, and a Canvas 2D waveform controller that ties the scroll narrative together. The grain texture is a 10-frame animated SVG cycling at 0.8 seconds. Built raw. Shipped with intent.`,
+        role: `Design · Engineering`,
     },
+    {
+        title: 'THIS PORTFOLIO',
+        slug: 'this-portfolio',
+        techStack: ["Next.js", "TypeScript", "GSAP", "Tailwind CSS"],
+        thumbnail: '/portfolio-2.png',
+        longThumbnail: '/portfolio-2.png',
+        images: ['/portfolio-2.png'],
+        sourceCode: 'https://github.com/Hemant5241/portfolio-2.0-main',
+        year: 2026,
+        description: `This portfolio<br/><br/>The current, upgraded version of my personal portfolio. Built with a focus on high performance, modern design aesthetics, and smooth animations.<br/><br/>Features a clean UI and seamless page transitions, heavily utilizing Next.js for fast routing, combined with Tailwind CSS for styling and GSAP for micro-interactions and scroll animations.`,
+        role: `Design · Engineering`,
+    }
 ];
 
 export const MY_EXPERIENCE = [
     {
-        title: 'Software Engineer (Frontend)',
-        company: 'Strativ AB',
-        duration: 'Dec 2024 - Present',
+        title: 'Full Stack Developer(Team Lead)',
+        company: 'UptoSkills',
+        duration: 'Jan 2026 - April 2026',
     },
     {
-        title: 'Frontend Developer',
-        company: 'Epikcoders',
-        duration: 'Oct 2023 - Nov 2024',
-    },
-    {
-        title: 'Frontend Engineer',
-        company: 'Anchorblock Technology',
-        duration: 'Oct 2022 - Sep 2023',
-    },
-    {
-        title: 'Frontend Developer (Part-time)',
-        company: 'Branex IT',
-        duration: 'Jan 2022 - Oct 2022',
-    },
+        title: 'Junior Full Stack Developer',
+        company: 'FireFist Soutions',
+        duration: 'May 2025 - Nov 2025',
+    }
 ];

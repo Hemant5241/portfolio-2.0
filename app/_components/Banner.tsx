@@ -42,7 +42,7 @@ const Banner = () => {
             >
                 <div className="max-md:grow max-md:flex flex-col justify-center items-start max-w-[544px]">
                     <h1 className="banner-title slide-up-and-fade leading-[.95] text-6xl sm:text-[80px] font-anton">
-                        <span className="text-primary">FRONTEND</span>
+                        <span className="text-primary">FULL STACK</span>
                         <br /> <span className="ml-4">DEVELOPER</span>
                     </h1>
                     <p className="banner-description slide-up-and-fade mt-6 text-lg text-muted-foreground">
@@ -50,23 +50,22 @@ const Banner = () => {
                         <span className="font-medium text-foreground">
                             Hemant
                         </span>
-                        . A creative Frontend Developer with 10+ Months of
+                        . A creative Full Stack Developer with 6+ Months of
                         experience in building high-performance, scalable, and
                         responsive web solutions.
                     </p>
+
                     <Button
                         as="link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={GENERAL_INFO.upworkProfile}
+                        href={`mailto:${GENERAL_INFO.email}?subject=${encodeURIComponent(GENERAL_INFO.emailSubject)}&body=${encodeURIComponent(GENERAL_INFO.emailBody)}`}
                         variant="primary"
                         className="mt-9 banner-button slide-up-and-fade"
                     >
                         Let&apos;s Talk
                     </Button>
 
-                    <div className="flex items-center gap-2 mt-3">
-                        <span className="size-3 rounded-full bg-white"></span>
+                    <div className="flex items-center gap-2 mt-4 slide-up-and-fade">
+                        <span className="size-3 rounded-full animate-white-green"></span>
                         <span className="text-sm text-muted-foreground">
                             Available for full-time opportunities
                         </span>
@@ -76,7 +75,7 @@ const Banner = () => {
                 <div className="md:absolute bottom-[10%] right-[4%] flex md:flex-col gap-4 md:gap-8 text-center md:text-right">
                     <div className="slide-up-and-fade">
                         <h5 className="text-3xl sm:text-4xl font-anton text-primary mb-1.5">
-                            10+
+                            6+
                         </h5>
                         <p className="text-muted-foreground">
                             Months of Experience
@@ -84,7 +83,7 @@ const Banner = () => {
                     </div>
                     <div className="slide-up-and-fade">
                         <h5 className="text-3xl sm:text-4xl font-anton text-primary mb-1.5">
-                            7+
+                            5+
                         </h5>
                         <p className="text-muted-foreground">
                             Completed Projects
