@@ -5,11 +5,25 @@ import gsap from 'gsap';
 
 gsap.registerPlugin(useGSAP);
 
+let isInitialLoad = true;
+
 export default function Template({ children }: { children: React.ReactNode }) {
     useGSAP(() => {
         if (typeof window !== 'undefined') {
-            window.history.scrollRestoration = 'manual';
-            window.scrollTo(0, 0);
+            if (isInitialLoad) {
+                const navEntries = window.performance.getEntriesByType('navigation');
+                const isReload = navEntries.length > 0 && (navEntries[0] as PerformanceNavigationTiming).type === 'reload';
+                
+                if (isReload) {
+                    window.history.scrollRestoration = 'manual';
+                    window.scrollTo(0, 0);
+                } else {
+                    window.history.scrollRestoration = 'auto';
+                }
+                isInitialLoad = false;
+            } else {
+                window.history.scrollRestoration = 'auto';
+            }
         }
 
         const tl = gsap.timeline();
