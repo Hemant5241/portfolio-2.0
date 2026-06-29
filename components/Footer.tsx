@@ -25,8 +25,8 @@ const Footer = async () => {
                         className="leading-none text-muted-foreground hover:underline hover:text-white"
                     >
                         Design & built by Hemant Bhosale
-                        <div className="flex items-center justify-center gap-2 pt-3 text-sm">
-                            <span className="inline-block size-2 rounded-full animate-white-green"></span>
+                        <div className="flex items-center justify-center gap-2 pt-3 text-sm text-primary animate-visitor-pulse">
+                            <span className="inline-block size-2 rounded-full bg-primary"></span>
                             <span>{Number(count).toLocaleString()} visitors</span>
                         </div>
                     </a>

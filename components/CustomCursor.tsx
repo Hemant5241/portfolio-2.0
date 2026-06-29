@@ -25,10 +25,22 @@ const CustomCursor = () => {
             });
         }) as any;
 
+        const handleMouseLeave = contextSafe?.(() => {
+            if (!svgRef.current) return;
+            gsap.to(svgRef.current, {
+                opacity: 0,
+                duration: 0.25,
+            });
+        }) as any;
+
         window.addEventListener('mousemove', handleMouseMove);
+        document.documentElement.addEventListener('mouseleave', handleMouseLeave);
+        document.documentElement.addEventListener('mouseenter', handleMouseMove);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
+            document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
+            document.documentElement.removeEventListener('mouseenter', handleMouseMove);
         };
     });
 

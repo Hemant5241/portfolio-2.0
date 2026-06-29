@@ -69,3 +69,11 @@
     animation: white-green-blink 1.5s infinite ease-in-out;
 }
 
+@keyframes visitor-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+.animate-visitor-pulse {
+    animation: visitor-pulse 2s ease-in-out infinite;
+}

@@ -1,156 +1,173 @@
 'use client';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
-import { MoveUpRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
-
-const COLORS = [
-    'bg-yellow-500 text-black',
-    'bg-blue-500 text-white',
-    'bg-teal-500 text-black',
-    'bg-indigo-500 text-white',
-];
+import { useLenis } from 'lenis/react';
 
 const MENU_LINKS = [
-    {
-        name: 'Home',
-        url: '/',
-    },
-    {
-        name: 'About Me',
-        url: '/#about-me',
-    },
-    {
-        name: 'Experience',
-        url: '/#my-experience',
-    },
-    {
-        name: 'Projects',
-        url: '/#selected-projects',
-    },
+    { name: 'Home', url: '/' },
+    { name: 'About Me', url: '/#about-me' },
+    { name: 'Experience', url: '/#my-experience' },
+    { name: 'Projects', url: '/#selected-projects' },
 ];
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter();
+    const lenis = useLenis();
+
+    // Prevent body scroll when menu is open
+    useEffect(() => {
+        if (isMenuOpen) {
+            lenis?.stop();
+            document.body.style.overflow = 'hidden';
+        } else {
+            lenis?.start();
+            document.body.style.overflow = '';
+        }
+        return () => {
+            lenis?.start();
+            document.body.style.overflow = '';
+        };
+    }, [isMenuOpen, lenis]);
 
     return (
         <>
-            <div className="sticky top-0 z-[4]">
+            {/* Menu Toggle Button */}
+            <div className="fixed top-6 right-6 md:top-10 md:right-10 z-[6]">
                 <button
-                    className={cn(
-                        'group size-12 absolute top-5 right-5 md:right-10 z-[2]',
-                    )}
+                    className="group relative size-12 md:size-14 flex items-center justify-center transition-transform duration-500 hover:scale-105"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label="Toggle Menu"
                 >
-                    <span
-                        className={cn(
-                            'inline-block w-3/5 h-0.5 bg-foreground rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 -translate-y-[5px] ',
-                            {
-                                'rotate-45 -translate-y-1/2': isMenuOpen,
-                                'md:group-hover:rotate-12': !isMenuOpen,
-                            },
-                        )}
-                    ></span>
-                    <span
-                        className={cn(
-                            'inline-block w-3/5 h-0.5 bg-foreground rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 translate-y-[5px] ',
-                            {
-                                '-rotate-45 -translate-y-1/2': isMenuOpen,
-                                'md:group-hover:-rotate-12': !isMenuOpen,
-                            },
-                        )}
-                    ></span>
+                    <div className="relative z-10 w-8 h-4 flex flex-col justify-between items-center">
+                        <span
+                            className={cn(
+                                'block w-full h-[2px] bg-white rounded-full transition-all duration-500 origin-center',
+                                {
+                                    'rotate-45 translate-y-[7px]': isMenuOpen,
+                                    'group-hover:-translate-y-1 group-hover:rotate-6': !isMenuOpen,
+                                }
+                            )}
+                        />
+                        <span
+                            className={cn(
+                                'block w-full h-[2px] bg-white rounded-full transition-all duration-500 origin-center',
+                                {
+                                    '-rotate-45 -translate-y-[7px]': isMenuOpen,
+                                    'group-hover:translate-y-1 group-hover:-rotate-6': !isMenuOpen,
+                                }
+                            )}
+                        />
+                    </div>
                 </button>
             </div>
 
+            {/* Overlay */}
             <div
                 className={cn(
-                    'overlay fixed inset-0 z-[2] bg-black/70 transition-all duration-150',
+                    'fixed inset-0 z-[4] bg-black/60 backdrop-blur-sm transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]',
                     {
                         'opacity-0 invisible pointer-events-none': !isMenuOpen,
-                    },
+                        'opacity-100 visible pointer-events-auto': isMenuOpen,
+                    }
                 )}
                 onClick={() => setIsMenuOpen(false)}
-            ></div>
+            />
 
+            {/* Sidebar Panel */}
             <div
                 className={cn(
-                    'fixed top-0 right-0 h-[100dvh] w-[500px] max-w-[calc(100vw-3rem)] transform translate-x-full transition-transform duration-700 z-[3] overflow-hidden gap-y-14',
-                    'flex flex-col lg:justify-center py-10',
-                    { 'translate-x-0': isMenuOpen },
+                    'fixed top-0 right-0 h-[100dvh] w-full md:w-[600px] bg-[#080808] border-l border-white/5 transform transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] z-[5] flex flex-col justify-between pt-32 pb-12 px-10 md:px-20 overflow-y-auto shadow-2xl',
+                    {
+                        'translate-x-full': !isMenuOpen,
+                        'translate-x-0': isMenuOpen,
+                    }
                 )}
             >
-                <div
+                {/* Main Menu Links */}
+                <nav className="flex flex-col gap-4 md:gap-6 mt-10">
+                    {MENU_LINKS.map((link, idx) => (
+                        <div key={link.name} className="overflow-hidden py-2">
+                            <button
+                                onClick={() => {
+                                    setIsMenuOpen(false);
+                                    
+                                    // Wait for the menu to visually close before scrolling
+                                    setTimeout(() => {
+                                        if (link.url.startsWith('/#') && window.location.pathname === '/') {
+                                            // Extract the hash part (e.g., "#about-me")
+                                            const hash = link.url.replace('/', '');
+                                            lenis?.scrollTo(hash, { offset: 0, duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+                                        } else {
+                                            router.push(link.url);
+                                        }
+                                    }, 500);
+                                }}
+                                className={cn(
+                                    'group text-6xl md:text-7xl font-anton uppercase text-left transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] transform origin-left',
+                                    {
+                                        'translate-y-[120%] rotate-3 opacity-0': !isMenuOpen,
+                                        'translate-y-0 rotate-0 opacity-100': isMenuOpen,
+                                    }
+                                )}
+                                style={{ transitionDelay: `${isMenuOpen ? idx * 100 + 200 : 0}ms` }}
+                            >
+                                <span className="inline-block relative text-white/40 group-hover:text-white transition-colors duration-500">
+                                    {link.name}
+                                    {/* Hover Underline effect */}
+                                    <span className="absolute left-0 bottom-2 w-0 h-[4px] bg-primary transition-all duration-500 ease-out group-hover:w-full" />
+                                </span>
+                            </button>
+                        </div>
+                    ))}
+                </nav>
+
+                {/* Bottom Section: Socials & Email */}
+                <div 
                     className={cn(
-                        'fixed inset-0 scale-150 translate-x-1/2 rounded-[50%] bg-background-light duration-700 delay-150 z-[-1]',
+                        'mt-20 flex flex-col md:flex-row justify-between gap-12 transition-all duration-700 ease-out transform',
                         {
-                            'translate-x-0': isMenuOpen,
-                        },
+                            'translate-y-10 opacity-0': !isMenuOpen,
+                            'translate-y-0 opacity-100': isMenuOpen,
+                        }
                     )}
-                ></div>
-
-                <div className="grow flex md:items-center w-full max-w-[300px] mx-8 sm:mx-auto">
-                    <div className="flex gap-10 lg:justify-between max-lg:flex-col w-full">
-                        <div className="max-lg:order-2">
-                            <p className="text-muted-foreground mb-5 md:mb-8">
-                                SOCIAL
-                            </p>
-                            <ul className="space-y-3">
-                                {SOCIAL_LINKS.map((link) => (
-                                    <li key={link.name}>
-                                        <a
-                                            href={link.url}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-lg capitalize hover:underline"
-                                        >
-                                            {link.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="">
-                            <p className="text-muted-foreground mb-5 md:mb-8">
-                                MENU
-                            </p>
-                            <ul className="space-y-3">
-                                {MENU_LINKS.map((link, idx) => (
-                                    <li key={link.name}>
-                                        <button
-                                            onClick={() => {
-                                                router.push(link.url);
-                                                setIsMenuOpen(false);
-                                            }}
-                                            className="group text-xl flex items-center gap-3"
-                                        >
-                                            <span
-                                                className={cn(
-                                                    'size-3.5 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-[200%] transition-all',
-                                                    COLORS[idx],
-                                                )}
-                                            >
-                                                <MoveUpRight
-                                                    size={8}
-                                                    className="scale-0 group-hover:scale-100 transition-all"
-                                                />
-                                            </span>
-                                            {link.name}
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    style={{ transitionDelay: `${isMenuOpen ? 600 : 0}ms` }}
+                >
+                    {/* Socials */}
+                    <div>
+                        <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-5 font-bold font-roboto-flex">Socials</p>
+                        <ul className="flex flex-col gap-3 font-roboto-flex">
+                            {SOCIAL_LINKS.map((link) => (
+                                <li key={link.name}>
+                                    <a
+                                        href={link.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-white/50 hover:text-primary transition-colors text-xs uppercase tracking-widest relative group font-medium flex w-fit items-center gap-1"
+                                    >
+                                        {link.name}
+                                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 text-[10px]">↗</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                </div>
 
-                <div className="w-full max-w-[300px] mx-8 sm:mx-auto">
-                    <p className="text-muted-foreground mb-4">GET IN TOUCH</p>
-                    <a href={`mailto:${GENERAL_INFO.email}`}>
-                        {GENERAL_INFO.email}
-                    </a>
+                    {/* Email */}
+                    <div>
+                        <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-5 font-bold font-roboto-flex">Get in touch</p>
+                        <a 
+                            href={`mailto:${GENERAL_INFO.email}`}
+                            className="text-white/80 hover:text-primary transition-colors text-sm md:text-base tracking-wide block relative group overflow-hidden font-roboto-flex w-fit"
+                        >
+                            {GENERAL_INFO.email}
+                            <span className="block w-full h-[1px] bg-white/20 mt-2 relative overflow-hidden">
+                                <span className="absolute inset-0 bg-primary -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]" />
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </>

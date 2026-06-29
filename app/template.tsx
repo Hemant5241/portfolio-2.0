@@ -7,6 +7,11 @@ gsap.registerPlugin(useGSAP);
 
 export default function Template({ children }: { children: React.ReactNode }) {
     useGSAP(() => {
+        if (typeof window !== 'undefined') {
+            window.history.scrollRestoration = 'manual';
+            window.scrollTo(0, 0);
+        }
+
         const tl = gsap.timeline();
 
         tl.to('.page-transition--inner', {
