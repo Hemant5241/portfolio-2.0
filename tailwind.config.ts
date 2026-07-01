@@ -78,6 +78,9 @@ export default {
             transitionDuration: {
                 '7000': '7s',
             },
+            transitionTimingFunction: {
+                'custom-ease': 'cubic-bezier(0.76,0,0.24,1)',
+            },
             screens: {
                 xs: '420px',
             },

@@ -1,11 +1,19 @@
 import { GENERAL_INFO } from '@/lib/data';
 
 const Footer = async () => {
-    const visitorStats = await fetch(
-        'https://api.counterapi.dev/v1/hemant5241/portfolio-2.0/up',
-    );
-
-    const { count } = await visitorStats.json();
+    let count = 0;
+    try {
+        const visitorStats = await fetch(
+            'https://api.counterapi.dev/v1/hemant5241/portfolio-2.0/up',
+            { next: { revalidate: 60 } } // cache for 60 seconds to reduce timeouts
+        );
+        if (visitorStats.ok) {
+            const data = await visitorStats.json();
+            count = data.count || 0;
+        }
+    } catch (error) {
+        console.error('Failed to fetch visitor stats:', error);
+    }
 
     return (
         <footer className="text-center pb-5" id="contact">

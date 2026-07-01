@@ -31,6 +31,9 @@ const robotoFlex = Roboto_Flex({
 export const metadata: Metadata = {
     title: 'Portfolio - Hemant Bhosale',
     description: 'Personal portfolio of Hemant Bhosale',
+    icons: {
+        icon: '/favicon.png',
+    },
 };
 
 export default function RootLayout({

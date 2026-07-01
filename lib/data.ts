@@ -15,24 +15,28 @@ export const SOCIAL_LINKS = [
 export const MY_STACK = {
     frontend: [
         {
-            name: 'JavaScript',
-            icon: '/logo/js.png',
-        },
-        {
-            name: 'TypeScript',
-            icon: '/logo/ts.png',
+            name: 'Next.js',
+            icon: '/logo/next.png',
         },
         {
             name: 'React',
             icon: '/logo/react.png',
         },
         {
-            name: 'Next.js',
-            icon: '/logo/next.png',
+            name: 'TypeScript',
+            icon: '/logo/ts.png',
+        },
+        {
+            name: 'JavaScript',
+            icon: '/logo/js.png',
         },
         {
             name: 'Tailwind CSS',
             icon: '/logo/tailwind.png',
+        },
+        {
+            name: 'React Native',
+            icon: '/logo/react-native.svg',
         },
         {
             name: 'GSAP',
@@ -53,30 +57,30 @@ export const MY_STACK = {
             icon: '/logo/node.png',
         },
         {
-            name: 'NestJS',
-            icon: '/logo/nest.svg',
-        },
-        {
             name: 'Express.js',
             icon: '/logo/express.png',
+        },
+        {
+            name: 'NestJS',
+            icon: '/logo/nest.svg',
         },
     ],
     database: [
         {
-            name: 'MySQL',
-            icon: '/logo/mysql.svg',
+            name: 'MongoDB',
+            icon: '/logo/mongodb.svg',
         },
         {
             name: 'PostgreSQL',
             icon: '/logo/postgreSQL.png',
         },
         {
-            name: 'MongoDB',
-            icon: '/logo/mongodb.svg',
-        },
-        {
             name: 'Prisma',
             icon: '/logo/prisma.png',
+        },
+        {
+            name: 'MySQL',
+            icon: '/logo/mysql.svg',
         },
     ],
     tools: [
@@ -85,13 +89,29 @@ export const MY_STACK = {
             icon: '/logo/git.png',
         },
         {
+            name: 'AWS',
+            icon: '/logo/aws.png',
+        },
+        {
             name: 'Docker',
             icon: '/logo/docker.svg',
         },
         {
-            name: 'AWS',
-            icon: '/logo/aws.png',
+            name: 'Vercel',
+            icon: '/logo/vercel.svg',
         },
+        {
+            name: 'Figma',
+            icon: '/logo/figma.svg',
+        },
+        {
+            name: 'Three.js',
+            icon: '/logo/threejs.svg',
+        },
+        {
+            name: 'Netlify',
+            icon: '/logo/netlify.svg',
+        }
     ],
 };
 

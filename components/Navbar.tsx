@@ -67,7 +67,7 @@ const Navbar = () => {
             {/* Overlay */}
             <div
                 className={cn(
-                    'fixed inset-0 z-[4] bg-black/60 backdrop-blur-sm transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]',
+                    'fixed inset-0 z-[4] bg-black/60 backdrop-blur-sm transition-all duration-700 ease-custom-ease',
                     {
                         'opacity-0 invisible pointer-events-none': !isMenuOpen,
                         'opacity-100 visible pointer-events-auto': isMenuOpen,
@@ -79,7 +79,7 @@ const Navbar = () => {
             {/* Sidebar Panel */}
             <div
                 className={cn(
-                    'fixed top-0 right-0 h-[100dvh] w-[85%] xs:w-[75%] md:w-[500px] lg:w-[540px] xl:w-[600px] bg-[#080808] border-l border-white/5 transform transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] z-[5] overflow-y-auto shadow-2xl',
+                    'fixed top-0 right-0 h-[100dvh] w-[85%] xs:w-[75%] md:w-[500px] lg:w-[540px] xl:w-[600px] bg-[#080808] border-l border-white/5 transform transition-transform duration-700 ease-custom-ease z-[5] overflow-y-auto shadow-2xl',
                     {
                         'translate-x-full': !isMenuOpen,
                         'translate-x-0': isMenuOpen,
@@ -107,7 +107,7 @@ const Navbar = () => {
                                         }, 500);
                                     }}
                                     className={cn(
-                                        'group text-4xl xs:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-anton uppercase text-left transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] transform origin-left',
+                                        'group text-4xl xs:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-anton uppercase text-left transition-all duration-700 ease-custom-ease transform origin-left',
                                         {
                                             'translate-y-[120%] rotate-3 opacity-0': !isMenuOpen,
                                             'translate-y-0 rotate-0 opacity-100': isMenuOpen,
@@ -165,7 +165,7 @@ const Navbar = () => {
                             >
                                 {GENERAL_INFO.email}
                                 <span className="block w-full h-[1px] bg-white/20 mt-2 relative overflow-hidden">
-                                    <span className="absolute inset-0 bg-primary -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]" />
+                                    <span className="absolute inset-0 bg-primary -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-custom-ease" />
                                 </span>
                             </a>
                         </div>
