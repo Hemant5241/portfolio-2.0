@@ -183,6 +183,7 @@ export const PROJECTS: IProject[] = [
         title: 'THIS PORTFOLIO',
         slug: 'this-portfolio',
         techStack: ["Next.js", "TypeScript", "GSAP", "Tailwind CSS"],
+        liveUrl: 'https://hemantbhosale.netlify.app',
         thumbnail: '/portfolio-2.png',
         longThumbnail: '/portfolio-2.png',
         images: ['/portfolio-2.png'],
